@@ -42,9 +42,9 @@ print("train size: ", X_train.shape)
 print("test size: ", X_test.shape)
 
 irisDataFrame = pd.DataFrame(X_train, columns = irisDataset.feature_names)
-pd.plotting.scatter_matrix(irisDataFrame, c = y_train, figsize = (15, 15), marker = 'o', hist_kwds = {'bins' : 20}, s = 60, alpha = 0.8, cmap = mglearn.cm3)
+pd.plotting.scatter_matrix(irisDataFrame, c = y_train, figsize = (10, 10), marker = 'o', hist_kwds = {'bins' : 20}, s = 60, alpha = 0.5, cmap = mglearn.cm3, grid = True)
 
-# plt.show()
+plt.show()
 
 knn = KNeighborsClassifier(n_neighbors = 1)
 knn.fit(X_train, y_train)
