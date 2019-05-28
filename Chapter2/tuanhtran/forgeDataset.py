@@ -20,3 +20,6 @@ print("y:")
 print(y)
 
 plt.show()
+
+mglearn.plots.plot_knn_classification(n_neighbors = 3)
+plt.show()
