@@ -19,7 +19,7 @@ for k in irisKeys:
 	print("Iris " + k)
 	print(irisDataset[k])
 
-X_train, X_test, y_train, y_test = train_test_split(irisDataset['data'], irisDataset['target'], random_state = 0)
+X_train, X_test, y_train, y_test = train_test_split(irisDataset['data'], irisDataset['target'], random_state = 0, stratify = irisDataset['target'])
 
 print(splitStr)
 print("X_train: ")
@@ -57,4 +57,12 @@ print("actual result: ")
 print(y_test)
 
 print("test set score: " + str(np.mean(y_predict == y_test)))
-input()
+# print(np.mean(y_train))
+# print(np.mean(y_test))
+# print(np.var(y_train))
+# print(np.var(y_test))
+
+print(np.mean(X_train[:,0]))
+print(np.mean(X_test[:,0]))
+print(np.var(X_train[:,0]))
+print(np.var(X_test[:,0]))
