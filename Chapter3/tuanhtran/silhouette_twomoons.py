@@ -1,4 +1,4 @@
-from sklearn.metrics.cluster import adjusted_rand_score, normalized_mutual_info_score
+from sklearn.metrics.cluster import silhouette_score
 from sklearn.datasets import make_moons
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import DBSCAN, KMeans, AgglomerativeClustering
@@ -21,15 +21,13 @@ random_clusters = random_state.randint(low = 0, high = 2, size = len(X))
 axes[0].scatter(X_scaled[:, 0], X_scaled[:, 1], c = random_clusters, 
 	cmap = mglearn.cm3, s = 60)
 
-axes[0].set_title("Random Assignment - ARI: {:.3f}".format(
-	adjusted_rand_score(y, random_clusters)))
-print("normalized_mutual_info_score: {:.3f}".format(normalized_mutual_info_score(y, random_clusters)))
+axes[0].set_title("Random Assignment - score: {:.3f}".format(
+	silhouette_score(X_scaled, random_clusters)))
 
 for ax, algorithm in zip(axes[1:], algorithms):
 	clusters = algorithm.fit_predict(X_scaled)
 	ax.scatter(X_scaled[:, 0], X_scaled[:, 1], c = clusters, cmap = mglearn.cm3, s = 60)
-	ax.set_title("{} - ARI: {:.3f}".format(algorithm.__class__.__name__,
-		adjusted_rand_score(y, clusters)))
-	print("normalized_mutual_info_score: {:.3f}".format(normalized_mutual_info_score(y, clusters)))
+	ax.set_title("{} - score: {:.3f}".format(algorithm.__class__.__name__,
+		silhouette_score(X_scaled, clusters)))
 
 plt.show()
