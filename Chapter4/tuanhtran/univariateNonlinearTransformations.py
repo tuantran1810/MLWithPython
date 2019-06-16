@@ -44,8 +44,10 @@ X_train_log = np.log(X_train + 1)
 X_test_log = np.log(X_test + 1)
 
 plt.figure()
-plt.hist(X_train_log[:, 0], bins = 25, color = 'gray')
+plt.hist(X_train_log[:, 1], bins = 25, color = 'gray')
 plt.ylabel("Number of feature appearances")
 plt.xlabel("value")
 
+score = Ridge().fit(X_train_log, y_train).score(X_test_log, y_test)
+print("test set score: {:.3f}".format(score))
 plt.show()
