@@ -35,3 +35,4 @@ logreg = LogisticRegression().fit(X_train_rfe, y_train)
 
 print("Logreg on training set: {:.3f}".format(logreg.score(X_train_rfe, y_train)))
 print("Logreg on test set: {:.3f}".format(logreg.score(X_test_rfe, y_test)))
+print("RFE score: {:.3f}".format(select.score(X_test, y_test)))
